@@ -1,5 +1,5 @@
 #Kalen Evans
 #2/2021
 #Code for a Robot oriented Magic: The Gathering AI opponent
-
-import 
+import playing_cards as pc
+import gameFunctions as gf
