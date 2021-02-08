@@ -28,14 +28,14 @@ class Deck(Hand,decklist):
 	self.decklist = decklist
 	def shuffle(self):
 		import random
-		random.shuffle(self.cards)
+		random.shuffle(self.decklist)
 	def populate(self):
 		for crd in self.decklist:
 			self.add(crd)
 	def draw(self,amount):
 		for cd in range(amount):
-			if self.cards:
-				topCard = self.cards[0]
+			if self.decklist:
+				topCard = self.decklist[0]
 				self.add(topCard)
 				topCard.location = "hand"
 			else:
