@@ -5,11 +5,11 @@ import random
 DEKCLIST = []
 class Card(object):
     def __init__(self,cmc,type,power,toughness,location):
-    self.cmc = 0
-    self.type = ""
-	self.power = 0
-	self.toughness = 0
-	self.location = "deck"
+    	self.cmc = 0
+    	self.type = ""
+		self.power = 0
+		self.toughness = 0
+		self.location = "deck"
 
 class Hand(object):
     def __init__(self):
