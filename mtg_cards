@@ -1,24 +1,24 @@
 # Kalen Evans
 # 2/2021
 # Magic: The Gathering Cards Class
-import random
+import random, gameFunctions
 
 class Card(object):
-    def __init__(self,cmc,type,location):
+	def __init__(self,cmc,type,location):
 		self.cmc = cmc
 		self.type = type
 		self.location = location
 
 class Hand(object):
-    def __init__(self):
-        self.cards = []
-    def clear(self):
-        self.cards = []
-    def add(self,card):
-        self.cards.append(card)
-    def give(self,card,otherHand):
-        self.cards.remove(card)
-        otherHand.add(card)
+	def __init__(self):
+		self.cards = []
+	def clear(self):
+		self.cards = []
+	def add(self,card):
+		self.cards.append(card)
+	def give(self,card,otherHand):
+		self.cards.remove(card)
+		otherHand.add(card)
 	def play(self,card):
 		card.location = "stack"
 	def resolve(self,card):
@@ -26,21 +26,21 @@ class Hand(object):
 
 class Deck(Hand,decklist):
 	self.decklist = decklist
-    def shuffle(self):
-        import random
-        random.shuffle(self.cards)
-    def populate(self):
-        for crd in self.decklist:
-            self.add(crd)
-    def draw(self,amount):
-        for cd in range(amount):
-            if self.cards:
-                topCard = self.cards[0]
-                self.add(topCard)
+	def shuffle(self):
+		import random
+		random.shuffle(self.cards)
+	def populate(self):
+		for crd in self.decklist:
+			self.add(crd)
+	def draw(self,amount):
+		for cd in range(amount):
+			if self.cards:
+				topCard = self.cards[0]
+				self.add(topCard)
 				topCard.location = "hand"
-            else:
-                print("Deck is out of cards: You Win")
-                self.lose()
+			else:
+				print("Deck is out of cards: You Win")
+				gameFunctions.self.lose()
 
 
 if __name__ == "__main__":
