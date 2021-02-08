@@ -1,5 +1,15 @@
 #Kalen Evans
 #2/2021
 #Code for a Robot oriented Magic: The Gathering AI opponent
-import playing_cards as pc
+import mtg_cards as mc
 import gameFunctions as gf
+DECKLIST = []
+
+def main():
+	bot = gf.Player("bot",20)
+	deck = mc.Deck(DECKLIST)
+	deck.mc.Deck.populate()
+	deck.mc.Deck.shuffle()
+	deck.mc.Deck.draw(7)
+	
+main()
