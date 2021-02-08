@@ -26,10 +26,14 @@ def askYesNo(question):
     return response
 
 class Player(object):
-    def __init__(self,name):
+    def __init__(self,name,life):
         self.name = name
         self.score = Score()
-        self.lives = 3
+        self.lives = life
+		self.lost = False
+		
+	def lose(self):
+		self.lost = True
 
 class Score(object):
     def __init__(self):
