@@ -4,13 +4,10 @@
 import random
 
 class Card(object):
-    def __init__(self,cmc,type,power,toughness,location):
-		self.cmc = 0
-		self.type = ""
-		self.power = 0
-		self.toughness = 0
-		self.location = "deck"
-		self.decklist = []
+    def __init__(self,cmc,type,location):
+		self.cmc = cmc
+		self.type = type
+		self.location = location
 
 class Hand(object):
     def __init__(self):
@@ -27,7 +24,8 @@ class Hand(object):
 	def resolve(self,card):
 		card.location = "graveyard"
 
-class Deck(Hand):
+class Deck(Hand,decklist):
+	self.decklist = decklist
     def shuffle(self):
         import random
         random.shuffle(self.cards)
