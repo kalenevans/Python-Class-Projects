@@ -4,23 +4,16 @@
 import random
 DEKCLIST = []
 class Card(object):
-    def __init__(self,cmc,type,power,toughness):
-        self.cmc = 0
-        self.type = ""
-		self.power = 0
-		self.toughness = 0
+    def __init__(self,cmc,type,power,toughness,location):
+    self.cmc = 0
+    self.type = ""
+	self.power = 0
+	self.toughness = 0
+	self.location = "deck"
 
 class Hand(object):
     def __init__(self):
         self.cards = []
-    def __str__(self):
-        if self.cards:
-            rep = ""
-            for card in self.cards:
-                rep += str(card)
-        else:
-            rep = "<EMPTY>"
-        return rep
     def clear(self):
         self.cards = []
     def add(self,card):
@@ -28,6 +21,10 @@ class Hand(object):
     def give(self,card,otherHand):
         self.cards.remove(card)
         otherHand.add(card)
+	def play(self,card):
+		card.location = "stack"
+	def resolve(self,card):
+		card.location = "graveyard"
 
 class Deck(Hand):
     def shuffle(self):
@@ -41,33 +38,11 @@ class Deck(Hand):
             if self.cards:
                 topCard = self.cards[0]
                 self.add(topCard)
+				topCard.location = "hand"
             else:
                 print("Deck is out of cards: You Win")
                 self.lose()
 
-class Pos_Card(Card):
-    def __init__(self,rank,suit):
-        super(Pos_Card, self).__init__(rank,suit)
-        self.faceup = True
-
-    def flip(self):
-        self.faceup = not self.faceup
-
-    def __str__(self):
-        if self.faceup:
-            rep = super(Pos_Card,self).__str__()
-        else:
-            rep = """
-            +-----------+
-            |###########|
-            |###########|
-            |###########|
-            |###########|
-            |###########|
-            |###########|
-            +-----------+
-            """
-        return rep
 
 if __name__ == "__main__":
     print("You ran this module directly (and did not 'import' it).")
