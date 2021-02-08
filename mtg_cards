@@ -2,14 +2,15 @@
 # 2/2021
 # Magic: The Gathering Cards Class
 import random
-DEKCLIST = []
+
 class Card(object):
     def __init__(self,cmc,type,power,toughness,location):
-    	self.cmc = 0
-    	self.type = ""
+		self.cmc = 0
+		self.type = ""
 		self.power = 0
 		self.toughness = 0
 		self.location = "deck"
+		self.decklist = []
 
 class Hand(object):
     def __init__(self):
@@ -31,7 +32,7 @@ class Deck(Hand):
         import random
         random.shuffle(self.cards)
     def populate(self):
-        for crd in DECKLIST:
+        for crd in self.decklist:
             self.add(crd)
     def draw(self,amount):
         for cd in range(amount):
